@@ -19,4 +19,10 @@ class User(TimedBaseModel):
     language = Column(String(2))
     status_register = Column(Boolean, default=False)
 
+    def __repr__(self):
+        return f'{[self.id, self.fullname_tg]}'
+
+
+
+
     query: sql.Select

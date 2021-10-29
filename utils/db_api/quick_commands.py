@@ -37,7 +37,6 @@ async def select_all_users():
 
 async def select_user(id: int):
     user = await User.query.where(User.id == id).gino.first()
-    print(user)
     return user
 
 
@@ -67,5 +66,4 @@ async def set_language(language):
     user_id = types.User.get_current().id
     user = await get_user(user_id)
     await user.update(language=language).apply()
-
 

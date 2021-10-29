@@ -12,6 +12,7 @@ from middlewares.language_moddleware import get_lang
 from states.registerstate import RegisterUsers
 from utils.db_api import quick_commands as db
 from utils.db_api.quick_commands import get_user, add_user, register_user_db
+from validations.validations_state import validations_phone
 
 
 @dp.message_handler(Command('register'))
@@ -27,17 +28,6 @@ async def register_users(message: types.Message, state: FSMContext):
         await message.answer(_('Пришли свое имя'))
         await RegisterUsers.name.set()
 
-
-
-
-# @dp.message_handler(state='language')
-# async def add_language(message: types.Message, state: FSMContext):
-#     language = message.text
-#     await db.set_language(language=language)
-#     await state.finish()
-#     await message.answer(_('Начнем регистрацию'))
-#     await message.answer(_('Пришли свое имя'))
-#     await RegisterUsers.name.set()
 
 @dp.message_handler(state=RegisterUsers.name)
 async def register_name_user(message: types.Message, state: FSMContext):
@@ -65,16 +55,25 @@ async def register_email_user(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=RegisterUsers.phone)
 async def register_phone_user(message: types.Message, state: FSMContext):
-    phone = message.text
-    await state.update_data(phone=phone)
-    result = await state.get_data()
-    name = result.get('name')
-    username = result.get('username')
-    email = result.get('email')
-    phone = result.get('phone')
-    await register_user_db(name, username, email, phone)
-    await message.answer(_('Регистрация завершена'))
-    await state.finish()
+    user_id = message.from_user.id
+    text = message.text
+    phone = await validations_phone(user_id, phone=text)
+    print(phone)
+    if phone != None:
+        await state.update_data(phone=phone)
+        result = await state.get_data()
+        name = result.get('name')
+        username = result.get('username')
+        email = result.get('email')
+        phone = result.get('phone')
+        await register_user_db(name, username, email, phone)
+        await message.answer(_('Регистрация завершена'))
+        await state.finish()
+    else:
+        await message.answer(_('Номер не валидный'))
+        await message.answer(_('Пришлите номер заново'))
+        await RegisterUsers.phone.set()
+
 
 
 

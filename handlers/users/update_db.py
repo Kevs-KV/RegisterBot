@@ -1,16 +1,11 @@
-
 from aiogram import types
-
-from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Command
 from aiogram.types import CallbackQuery
-from aiogram.utils.markdown import hcode
-
 from keyboards.inline.languages_callback import languages_markup_update
 from loader import dp, _
 from states.registerstate import RegisterUsers
 from utils.db_api import quick_commands as db
-from utils.db_api.quick_commands import add_user
+from utils.db_api.commands_admin import all_register_users
 
 
 @dp.message_handler(Command('update_language'))
@@ -31,6 +26,9 @@ async def change_language(call: CallbackQuery):
     if command_update[0] == 'lang':
         await call.message.answer(_('Пришли свое имя'))
         await RegisterUsers.name.set()
+
+
+
 
 
 # @dp.callback_query_handler(text_contains="update")
