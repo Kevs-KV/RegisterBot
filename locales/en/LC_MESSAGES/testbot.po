@@ -1,0 +1,186 @@
+# English translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-11-08 20:20+0300\n"
+"PO-Revision-Date: 2021-11-08 20:23+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: handlers/users/admin_handler.py:15
+msgid "Всего пользователей: {}, зарегестривованые из них: {}"
+msgstr "Total users: {}, registered of them: {} "
+
+#: handlers/users/admin_handler.py:19 handlers/users/admin_handler.py:31
+msgid "Вы не администратор"
+msgstr "You are not an administrator"
+
+#: handlers/users/admin_handler.py:29
+msgid "База пользователей удалена"
+msgstr "User base deleted"
+
+#: handlers/users/help.py:9 handlers/users/help.py:19
+msgid "Список команд: "
+msgstr "List of commands: "
+
+#: handlers/users/register.py:20
+msgid "Регистрация прервана"
+msgstr "Registration aborted"
+
+#: handlers/users/register.py:30
+msgid "Пришли мне язык"
+msgstr "Send me tongue"
+
+#: handlers/users/register.py:32 handlers/users/start.py:39
+msgid "Начнем регистрацию"
+msgstr "Let's start the registration"
+
+#: handlers/users/register.py:33 handlers/users/start.py:40
+#: handlers/users/update_db.py:30
+msgid "Пришли свое имя"
+msgstr "Send your name"
+
+#: handlers/users/register.py:36
+msgid "Вы уже зарегестрированы"
+msgstr "You are already registered"
+
+#: handlers/users/register.py:48
+msgid "Пришли свою фамилию"
+msgstr "Send your last name"
+
+#: handlers/users/register.py:51
+msgid "Странное имя... Пришли имя заново"
+msgstr "Wrong name, send the name again"
+
+#: handlers/users/register.py:65
+msgid "Пришли свою страну"
+msgstr "Send your country"
+
+#: handlers/users/register.py:68
+msgid "Странная фамилия... Пришли фамилию заново"
+msgstr "Wrong surname, send surname again"
+
+#: handlers/users/register.py:85 handlers/users/register.py:114
+msgid "Пришли свой возраст"
+msgstr "Your age has come"
+
+#: handlers/users/register.py:96
+msgid "Пришли свой город"
+msgstr "Send your city"
+
+#: handlers/users/register.py:103
+msgid "Выберите страну из меню"
+msgstr "Select a country from the menu"
+
+#: handlers/users/register.py:127
+msgid "Пришли свой email"
+msgstr "Send your email"
+
+#: handlers/users/register.py:130
+msgid "К сожалению ваш возраст не подходит"
+msgstr "Sorry, your age is not suitable"
+
+#: handlers/users/register.py:132
+msgid "Неправильно вводимые данные, введите возраст заново"
+msgstr "Incorrectly entered data, enter the age again"
+
+#: handlers/users/register.py:145
+msgid "Пришли свой номер телефона"
+msgstr "Send your phone number"
+
+#: handlers/users/register.py:149
+msgid "Почтовое имя на валидно, введи email заново"
+msgstr "Email name is not valid, please enter email again"
+
+#: handlers/users/register.py:156 handlers/users/register.py:172
+msgid "Регистрация завершена"
+msgstr "Registration completed"
+
+#: handlers/users/register.py:173
+msgid "Отменить регистрацию - /cancel_register"
+msgstr "Unregister - /cancel_register"
+
+#: handlers/users/register.py:175
+msgid "Номер не валидный"
+msgstr "The number is not valid"
+
+#: handlers/users/register.py:176
+msgid "Пришлите номер заново"
+msgstr "Send the number again"
+
+#: handlers/users/register.py:200
+msgid "Регистрация отменена"
+msgstr "Registration canceled"
+
+#: handlers/users/start.py:22
+msgid "Пришли мне язык для продолжения"
+msgstr "Send me a tongue to continue"
+
+#: handlers/users/start.py:24 handlers/users/start.py:31
+msgid "Привет"
+msgstr "Hello"
+
+#: handlers/users/start.py:25 handlers/users/start.py:32
+msgid "У нас запланировано мероприятие"
+msgstr "Would you like to register?"
+
+#: handlers/users/start.py:26 handlers/users/start.py:33
+msgid "Желаете зарегистрироваться?"
+msgstr "We have an event planned"
+
+#: handlers/users/start.py:47
+msgid "Хорошего дня"
+msgstr "Have a nice day"
+
+#: handlers/users/update_db.py:26
+msgid "Язык был установлен"
+msgstr "The language was set"
+
+#: keyboards/default/cancel.py:11 keyboards/default/contact_button.py:15
+#: keyboards/default/location_buttons.py:14
+msgid "Отмена"
+msgstr "Cancel"
+
+#: keyboards/default/contact_button.py:8
+msgid "Телефон"
+msgstr "Phone"
+
+#: keyboards/default/location_buttons.py:8
+msgid "Лоцакия"
+msgstr "Location"
+
+#: keyboards/default/location_buttons.py:19
+msgid "Вручную"
+msgstr "Manually"
+
+#: keyboards/inline/languages_callback.py:47
+msgid "Да"
+msgstr "Yes"
+
+#: keyboards/inline/languages_callback.py:49
+msgid "Нет"
+msgstr "No"
+
+#: keyboards/inline/languages_callback.py:58
+msgid "Беларусь"
+msgstr "Belarus"
+
+#: keyboards/inline/languages_callback.py:61
+msgid "Россия"
+msgstr "Russia"
+
+#: keyboards/inline/languages_callback.py:64
+msgid "Великобритания"
+msgstr "United Kingdom"
+

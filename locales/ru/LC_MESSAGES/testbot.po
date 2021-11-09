@@ -1,0 +1,187 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-11-08 20:20+0300\n"
+"PO-Revision-Date: 2021-11-08 20:23+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: handlers/users/admin_handler.py:15
+msgid "Всего пользователей: {}, зарегестривованые из них: {}"
+msgstr ""
+
+#: handlers/users/admin_handler.py:19 handlers/users/admin_handler.py:31
+msgid "Вы не администратор"
+msgstr ""
+
+#: handlers/users/admin_handler.py:29
+msgid "База пользователей удалена"
+msgstr ""
+
+#: handlers/users/help.py:9 handlers/users/help.py:19
+msgid "Список команд: "
+msgstr ""
+
+#: handlers/users/register.py:20
+msgid "Регистрация прервана"
+msgstr ""
+
+#: handlers/users/register.py:30
+msgid "Пришли мне язык"
+msgstr ""
+
+#: handlers/users/register.py:32 handlers/users/start.py:39
+msgid "Начнем регистрацию"
+msgstr ""
+
+#: handlers/users/register.py:33 handlers/users/start.py:40
+#: handlers/users/update_db.py:30
+msgid "Пришли свое имя"
+msgstr ""
+
+#: handlers/users/register.py:36
+msgid "Вы уже зарегестрированы"
+msgstr ""
+
+#: handlers/users/register.py:48
+msgid "Пришли свою фамилию"
+msgstr ""
+
+#: handlers/users/register.py:51
+msgid "Странное имя... Пришли имя заново"
+msgstr ""
+
+#: handlers/users/register.py:65
+msgid "Пришли свою страну"
+msgstr ""
+
+#: handlers/users/register.py:68
+msgid "Странная фамилия... Пришли фамилию заново"
+msgstr ""
+
+#: handlers/users/register.py:85 handlers/users/register.py:114
+msgid "Пришли свой возраст"
+msgstr ""
+
+#: handlers/users/register.py:96
+msgid "Пришли свой город"
+msgstr ""
+
+#: handlers/users/register.py:103
+msgid "Выберите страну из меню"
+msgstr ""
+
+#: handlers/users/register.py:127
+msgid "Пришли свой email"
+msgstr ""
+
+#: handlers/users/register.py:130
+msgid "К сожалению ваш возраст не подходит"
+msgstr ""
+
+#: handlers/users/register.py:132
+msgid "Неправильно вводимые данные, введите возраст заново"
+msgstr ""
+
+#: handlers/users/register.py:145
+msgid "Пришли свой номер телефона"
+msgstr ""
+
+#: handlers/users/register.py:149
+msgid "Почтовое имя на валидно, введи email заново"
+msgstr ""
+
+#: handlers/users/register.py:156 handlers/users/register.py:172
+msgid "Регистрация завершена"
+msgstr ""
+
+#: handlers/users/register.py:173
+msgid "Отменить регистрацию - /cancel_register"
+msgstr ""
+
+#: handlers/users/register.py:175
+msgid "Номер не валидный"
+msgstr ""
+
+#: handlers/users/register.py:176
+msgid "Пришлите номер заново"
+msgstr ""
+
+#: handlers/users/register.py:200
+msgid "Регистрация отменена"
+msgstr ""
+
+#: handlers/users/start.py:22
+msgid "Пришли мне язык для продолжения"
+msgstr ""
+
+#: handlers/users/start.py:24 handlers/users/start.py:31
+msgid "Привет"
+msgstr ""
+
+#: handlers/users/start.py:25 handlers/users/start.py:32
+msgid "У нас запланировано мероприятие"
+msgstr ""
+
+#: handlers/users/start.py:26 handlers/users/start.py:33
+msgid ""
+msgstr ""
+
+#: handlers/users/start.py:47
+msgid "Хорошего дня"
+msgstr ""
+
+#: handlers/users/update_db.py:26
+msgid "Язык был установлен"
+msgstr ""
+
+#: keyboards/default/cancel.py:11 keyboards/default/contact_button.py:15
+#: keyboards/default/location_buttons.py:14
+msgid "Отмена"
+msgstr ""
+
+#: keyboards/default/contact_button.py:8
+msgid "Телефон"
+msgstr ""
+
+#: keyboards/default/location_buttons.py:8
+msgid "Лоцакия"
+msgstr ""
+
+#: keyboards/default/location_buttons.py:19
+msgid "Вручную"
+msgstr ""
+
+#: keyboards/inline/languages_callback.py:47
+msgid "Да"
+msgstr ""
+
+#: keyboards/inline/languages_callback.py:49
+msgid "Нет"
+msgstr ""
+
+#: keyboards/inline/languages_callback.py:58
+msgid "Беларусь"
+msgstr ""
+
+#: keyboards/inline/languages_callback.py:61
+msgid "Россия"
+msgstr ""
+
+#: keyboards/inline/languages_callback.py:64
+msgid "Великобритания"
+msgstr ""
+

@@ -1,9 +1,8 @@
-from aiogram.contrib.middlewares.i18n import I18nMiddleware
 from aiogram import types
-from data.config  import I18N_DOMAIN, LOCALES_DIR
+from aiogram.contrib.middlewares.i18n import I18nMiddleware
+
+from data.config import I18N_DOMAIN, LOCALES_DIR
 from utils.db_api.quick_commands import get_user
-
-
 
 
 async def get_lang(user_id):

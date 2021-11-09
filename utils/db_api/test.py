@@ -1,7 +1,6 @@
 import asyncio
 
 from data import config
-
 from utils.db_api import quick_commands
 from utils.db_api.db_gino import db
 
@@ -12,8 +11,8 @@ async def test():
     await db.gino.create_all()
 
     print('Добавляем')
-    await quick_commands.add_user(id=1, fullname_tg='Kevs',  language='ru')
-    await quick_commands.add_user(id=2, fullname_tg='addad', language='ru')
+    await quick_commands.add_user(id=1, fullname_tg='Dmitry',  language='ru')
+    await quick_commands.add_user(id=2, fullname_tg='Kevin', language='ru')
     print('Готово')
 
     count_users = await quick_commands.select_all_users()
