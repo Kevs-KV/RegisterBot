@@ -22,7 +22,6 @@ async def get_all_register_users(message: types.Message):
 async def drop_all_users(message: types.Message):
     admins = [int(admin) for admin in config.ADMINS]
     if message.from_user.id in admins:
-        users = await all_register_users()
         await db.set_bind(config.POSTGRES_URL)
         await db.gino.drop_all()
         await db.gino.create_all()

@@ -154,6 +154,7 @@ async def register_phone_keyboard(message: types.Message, state: FSMContext):
     await state.update_data(phone=phone)
     await finish_register(state)
     await message.answer(_('Регистрация завершена'), reply_markup=ReplyKeyboardRemove())
+    await message.answer(_('Отменить регистрацию - /cancel_register'))
 
 
 @dp.message_handler(state=RegisterUsers.phone)
