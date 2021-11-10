@@ -6,7 +6,7 @@ from keyboards.inline.languages_callback import start_markup_register, languages
 from loader import dp, _
 from middlewares.language_moddleware import get_lang
 from states.registerstate import RegisterUsers
-from utils.db_api.quick_commands import add_user
+from utils.db_api.quick_commands import add_user, set_status_register
 
 
 @dp.message_handler(CommandStart())
@@ -18,9 +18,13 @@ async def bot_start(message: types.Message):
         await message.answer(_('Пришли мне язык для продолжения(Send me a tongue to continue)'),
                              reply_markup=languages_markup_start)
     else:
-        await message.answer(_('Привет'))
-        await message.answer(_('У нас запланировано мероприятие'))
-        await message.answer(_('Желаете зарегистрироваться?'), reply_markup=start_markup_register)
+        user_status_register = await set_status_register(user_id)
+        if not user_status_register or user_status_register is None:
+            await message.answer(_('Привет'))
+            await message.answer(_('У нас запланировано мероприятие'))
+            await message.answer(_('Желаете зарегистрироваться?'), reply_markup=start_markup_register)
+        else:
+            await message.answer(_('Вы уже зарегестрированы'))
 
 
 @dp.callback_query_handler(text_contains="startregister")
