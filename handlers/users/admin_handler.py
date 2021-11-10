@@ -19,13 +19,10 @@ async def get_all_register_users(message: types.Message):
         await message.answer(_('Вы не администратор'))
 
 
-@dp.message_handler(Command('drop_all_users'))
+@dp.message_handler(Command('drop_all_users'), user_id=config.ADMINS)
 async def drop_all_users(message: types.Message):
-    admins = [int(admin) for admin in config.ADMINS]
-    if message.from_user.id in admins:
-        await db.set_bind(config.POSTGRES_URL)
-        await db.gino.drop_all()
-        await db.gino.create_all()
-        await message.answer(_('База пользователей удалена'))
-    else:
-        await message.answer(_('Вы не администратор'))
+    await db.set_bind(config.POSTGRES_URL)
+    await db.gino.drop_all()
+    await db.gino.create_all()
+    await message.answer(_('База пользователей удалена'))
+
