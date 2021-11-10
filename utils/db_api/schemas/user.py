@@ -1,10 +1,6 @@
-
-
 from sqlalchemy import Integer, Column, BigInteger, String, sql, Boolean
 
 from utils.db_api.db_gino import TimedBaseModel
-
-
 
 
 class User(TimedBaseModel):
@@ -24,8 +20,5 @@ class User(TimedBaseModel):
 
     def __str__(self):
         return f'id: {self.id}, name: {self.name} {self.username}, {self.country}, возраст: {self.age}, email: {self.email}, телефон: {self.phone}'
-
-
-
 
     query: sql.Select
