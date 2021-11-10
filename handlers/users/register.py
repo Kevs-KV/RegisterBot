@@ -115,6 +115,7 @@ async def register_country_user(message: types.Message, state: FSMContext):
                 await RegisterUsers.email.set()
             else:
                 await message.answer(_('К сожалению ваш возраст не подходит'))
+                await cancel_register_users(message, state)
     except:
         await message.answer(_('Неправильно вводимые данные, введите возраст заново'))
         await RegisterUsers.age.set()
