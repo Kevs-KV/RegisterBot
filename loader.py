@@ -7,7 +7,7 @@ from utils.db_api.db_gino import db
 bot = Bot(token=config.BOT_TOKEN, parse_mode=types.ParseMode.HTML)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
-db = db
+
 
 from middlewares.language_moddleware import setup_middleware
 
