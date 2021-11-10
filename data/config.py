@@ -18,5 +18,5 @@ DATABASE = env.str('DATABASE')
 POSTGRES_URL = f'postgresql://{DB_USER}:{DB_PASS}@{IP}/{DATABASE}'
 
 I18N_DOMAIN = 'testbot'
-BASE_DIR = Path(__file__).parent
-LOCALES_DIR = 'C:\\bot5\\botmongo\\locales'
+BASE_DIR = Path(__name__).resolve().parent
+LOCALES_DIR = BASE_DIR / "locales"
