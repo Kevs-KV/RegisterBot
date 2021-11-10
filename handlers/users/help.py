@@ -15,7 +15,7 @@ async def bot_help(message: types.Message):
 
 
 @dp.message_handler(Command('help_admin'))
-async def bot_help(message: types.Message):
+async def bot_help_admin(message: types.Message):
     text = (("Список команд: ",
              "/all_register_users - Показать всех зарегестрированных пользователей",
              '/drop_all_users - Отлистить базу',
