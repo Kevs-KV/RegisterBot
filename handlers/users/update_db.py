@@ -15,7 +15,6 @@ async def update_language(message: types.Message):
     await message.answer(_('Выберите язык для обновления'), reply_markup=languages_markup_update)
 
 
-
 @dp.callback_query_handler(text_contains="lang")
 async def change_language(call: CallbackQuery):
     await call.message.edit_reply_markup()
@@ -25,7 +24,8 @@ async def change_language(call: CallbackQuery):
     await call.message.answer(_("Язык был установлен(Language set)"))
     await call.message.answer(_("Обновить язык(Update language) - /update_language"))
     if command_update[0] == 'start':
-        await call.message.answer('/register - для прохождения регистрации(for registration)', reply_markup=ReplyKeyboardRemove())
+        await call.message.answer('/register - для прохождения регистрации(for registration)',
+                                  reply_markup=ReplyKeyboardRemove())
     if command_update[0] == 'lang':
         await call.message.answer(_('Пришли свое имя(Send your name)'), reply_markup=cancel_register_markup)
         await RegisterUsers.name.set()

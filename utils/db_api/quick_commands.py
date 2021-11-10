@@ -19,12 +19,9 @@ async def get_user(user_id: int):
     return user
 
 
-
 async def drop_register_users(user_id):
     user = await get_user(user_id)
     await user.update(status_register=False).apply()
-
-
 
 
 async def register_user_db(name, username, country, location, age, email, phone):
@@ -40,17 +37,14 @@ async def select_all_users():
     return users
 
 
-
 async def select_user(id: int):
     user = await User.query.where(User.id == id).gino.first()
     return user
 
 
-
 async def update_user_email(id, email):
     user = await User.get(id)
     await user.update(email=email).apply()
-
 
 
 async def update_user_username(telegram_id, name):
@@ -70,10 +64,8 @@ async def set_language(language):
     await user.update(language=language).apply()
 
 
-
 async def select_country(user_id):
     user = await get_user(user_id)
     if user:
         print(user.country)
         return user.country
-

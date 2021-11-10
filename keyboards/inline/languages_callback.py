@@ -13,8 +13,6 @@ languages_markup = InlineKeyboardMarkup(
     ]
 )
 
-
-
 languages_markup_update = InlineKeyboardMarkup(
     inline_keyboard=
     [
@@ -26,9 +24,8 @@ languages_markup_update = InlineKeyboardMarkup(
     ]
 )
 
-
 languages_markup_start = InlineKeyboardMarkup(
-    inline_keyboard =
+    inline_keyboard=
     [
         [
             InlineKeyboardButton(text="Русский", callback_data="start_lang_ru")],
@@ -37,8 +34,6 @@ languages_markup_start = InlineKeyboardMarkup(
         ]
     ]
 )
-
-
 
 start_markup_register = InlineKeyboardMarkup(
     inline_keyboard=
@@ -61,7 +56,7 @@ country_markup_register = InlineKeyboardMarkup(
             InlineKeyboardButton(text=_('Россия'), callback_data='country_Russia')
         ],
         [
-            InlineKeyboardButton(text=_('Великобритания'),  callback_data='country_England')
+            InlineKeyboardButton(text=_('Великобритания'), callback_data='country_England')
         ]
 
     ]

@@ -18,6 +18,7 @@ async def get_all_register_users(message: types.Message):
     else:
         await message.answer(_('Вы не администратор'))
 
+
 @dp.message_handler(Command('drop_all_users'))
 async def drop_all_users(message: types.Message):
     admins = [int(admin) for admin in config.ADMINS]

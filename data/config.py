@@ -15,7 +15,6 @@ DB_PASS = env.str('DB_PASS')
 DB_HOST = env.str('DB_HOST')
 DATABASE = env.str('DATABASE')
 
-
 POSTGRES_URL = f'postgresql://{DB_USER}:{DB_PASS}@{IP}/{DATABASE}'
 
 I18N_DOMAIN = 'testbot'

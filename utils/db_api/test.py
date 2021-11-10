@@ -11,7 +11,7 @@ async def test():
     await db.gino.create_all()
 
     print('Добавляем')
-    await quick_commands.add_user(id=1, fullname_tg='Dmitry',  language='ru')
+    await quick_commands.add_user(id=1, fullname_tg='Dmitry', language='ru')
     await quick_commands.add_user(id=2, fullname_tg='Kevin', language='ru')
     print('Готово')
 
@@ -20,7 +20,6 @@ async def test():
 
     user = await quick_commands.select_user(id=1)
     print(f'Получил пользователя: {user}')
-
 
 
 loop = asyncio.get_event_loop()
