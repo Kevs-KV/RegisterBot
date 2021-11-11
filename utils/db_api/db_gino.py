@@ -1,10 +1,10 @@
-from typing import List
 import datetime
+from typing import List
 
+import sqlalchemy as sa
 from aiogram import Dispatcher
 from gino import Gino
-import sqlalchemy as sa
-from sqlalchemy import Column, Integer, String, DateTime, LargeBinary
+from sqlalchemy import Column, Integer, String, DateTime
 
 from data import config
 
@@ -26,30 +26,19 @@ class BaseModel(db.Model):
         return f"<{model} {values_str}>"
 
 
-
 class BSModel(BaseModel):
     __tablename__ = 'bsmodel'
     id = Column(Integer, primary_key=True)
     name = Column(String(255))
 
 
-
-
 class TimedBaseModel(BaseModel):
     __abstract__ = True
-
-
 
     created_at = Column(DateTime(True), server_default=db.func.now())
     updated_at = Column(DateTime(True), default=datetime.datetime.utcnow,
                         onupdate=datetime.datetime.utcnow,
                         server_default=db.func.now())
-
-
-
-
-
-
 
 
 async def on_sturtap(dispatcher: Dispatcher):
