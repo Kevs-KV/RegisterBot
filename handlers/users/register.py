@@ -4,10 +4,11 @@ from aiogram.dispatcher.filters.builtin import Command
 from aiogram.types import ReplyKeyboardRemove, CallbackQuery
 from geopy.geocoders import Nominatim
 
-from keyboards.default.cancel_button import cancel_register_markup
-from keyboards.default.contact_button import keyboard_contact
-from keyboards.default.location_button import keyboard_location
-from keyboards.inline.languages_callback import languages_markup, country_markup_register
+from keyboards.default.cancel_button import cancel_register_button
+from keyboards.default.contact_button import keyboard_contact_button
+from keyboards.default.location_button import keyboard_location_button
+from keyboards.inline.country_callback import country_markup_register
+from keyboards.inline.languages_callback import languages_markup
 from loader import dp, _
 from middlewares.language_moddleware import get_lang
 from states.registerstate import RegisterUsers
@@ -31,8 +32,9 @@ async def register_users(message: types.Message):
             await add_user(fullname_tg=message.from_user.full_name, id=message.from_user.id)
             await message.answer(_('Пришли мне язык'), reply_markup=languages_markup)
         else:
+            cancel_markup = await cancel_register_button()
             await message.answer(_('Начнем регистрацию'))
-            await message.answer(_('Пришли свое имя'), reply_markup=cancel_register_markup)
+            await message.answer(_('Пришли свое имя'), reply_markup=cancel_markup)
             await RegisterUsers.name.set()
     else:
         await message.answer(_('Вы уже зарегестрированы'))
@@ -43,8 +45,9 @@ async def register_name_user(message: types.Message, state: FSMContext):
     name = message.text
     valid_name = await validations_fullname(name)
     if valid_name:
+        cancel_markup = await cancel_register_button()
         await state.update_data(name=name)
-        await message.answer(_('Пришли свою фамилию'), reply_markup=cancel_register_markup)
+        await message.answer(_('Пришли свою фамилию'), reply_markup=cancel_markup)
         await RegisterUsers.username.set()
     else:
         await message.answer(_('Странное имя... Пришли имя заново'))
@@ -56,6 +59,7 @@ async def register_username_user(message: types.Message, state: FSMContext):
     username = message.text
     valid_username = await validations_fullname(username)
     if valid_username:
+        keyboard_location = await keyboard_location_button()
         await state.update_data(username=username)
         await message.answer(_('Пришли свою страну'), reply_markup=keyboard_location)
         await RegisterUsers.country.set()
@@ -73,8 +77,9 @@ async def register_country(message: types.Message, state: FSMContext):
     print(location_users)
     location = location_users
     country = (location_users.split(', '))[-1]
+    cancel_markup = await cancel_register_button()
     await state.update_data(country=country, location=location)
-    await message.answer(_('Пришли свой возраст'), reply_markup=cancel_register_markup)
+    await message.answer(_('Пришли свой возраст'), reply_markup=cancel_markup)
     await RegisterUsers.age.set()
 
 
@@ -84,13 +89,15 @@ async def register_country(call: CallbackQuery, state: FSMContext):
     command_country = call.data.split('_')
     country = command_country[1]
     await state.update_data(country=country)
-    await call.message.answer(_('Пришли свой город'), reply_markup=cancel_register_markup)
+    cancel_markup = await cancel_register_button()
+    await call.message.answer(_('Пришли свой город'), reply_markup=cancel_markup)
     await RegisterUsers.city.set()
 
 
 @dp.message_handler(state=RegisterUsers.country)
 async def error_register_country(message: types.Message):
-    await message.answer(_('Выберите страну из меню'), reply_markup=country_markup_register)
+    country_markup = await country_markup_register()
+    await message.answer(_('Выберите страну из меню'), reply_markup=country_markup)
     await RegisterUsers.country.set()
 
 
@@ -98,7 +105,8 @@ async def error_register_country(message: types.Message):
 async def register_city_user(message: types.Message, state: FSMContext):
     location = message.text
     await state.update_data(location=location)
-    await message.answer(_('Пришли свой возраст'), reply_markup=cancel_register_markup)
+    cancel_markup = await cancel_register_button()
+    await message.answer(_('Пришли свой возраст'), reply_markup=cancel_markup)
     await RegisterUsers.age.set()
 
 
@@ -111,7 +119,8 @@ async def register_country_user(message: types.Message, state: FSMContext):
             age = int(message.text)
             if 80 >= age >= 18:
                 await state.update_data(age=age)
-                await message.answer(_('Пришли свой email'), reply_markup=cancel_register_markup)
+                cancel_markup = await cancel_register_button()
+                await message.answer(_('Пришли свой email'), reply_markup=cancel_markup)
                 await RegisterUsers.email.set()
             else:
                 await message.answer(_('К сожалению ваш возраст не подходит'))
@@ -124,17 +133,15 @@ async def register_country_user(message: types.Message, state: FSMContext):
 @dp.message_handler(state=RegisterUsers.email)
 async def register_email_user(message: types.Message, state: FSMContext):
     email = message.text
-    if email in ['Cancel', 'Отмена']:
-        await cancel_register_users(message, state)
+    valid_email = await validations_email(email)
+    if valid_email:
+        await state.update_data(email=email)
+        keyboard_contact = await keyboard_contact_button()
+        await message.answer(_('Пришли свой номер телефона'), reply_markup=keyboard_contact)
+        await RegisterUsers.phone.set()
     else:
-        valid_email = await validations_email(email)
-        if valid_email:
-            await state.update_data(email=email)
-            await message.answer(_('Пришли свой номер телефона'), reply_markup=keyboard_contact)
-            await RegisterUsers.phone.set()
-        else:
-            await RegisterUsers.email.set()
-            await message.answer(_('Почтовое имя на валидно, введи email заново'))
+        await RegisterUsers.email.set()
+        await message.answer(_('Почтовое имя на валидно, введи email заново'))
 
 
 @dp.message_handler(state=RegisterUsers.phone, content_types=types.ContentTypes.CONTACT)

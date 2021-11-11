@@ -1,9 +1,8 @@
 from aiogram import types
 from aiogram.dispatcher.filters import Command
 from aiogram.types import CallbackQuery
-from aiogram.types import ReplyKeyboardRemove
 
-from keyboards.default.cancel_button import cancel_register_markup
+from handlers.users.start import continue_start_register_callback
 from keyboards.inline.languages_callback import languages_markup_update
 from loader import dp, _
 from states.registerstate import RegisterUsers
@@ -21,11 +20,9 @@ async def change_language(call: CallbackQuery):
     command_update = call.data.split('_')
     language = command_update[-1]
     await db.set_language(language)
-    await call.message.answer(_("Язык был установлен(Language set)"))
-    await call.message.answer(_("Обновить язык(Update language) - /update_language"))
+    await call.message.answer(_("Язык был установлен", locale=language))
     if command_update[0] == 'start':
-        await call.message.answer('/register - для прохождения регистрации(for registration)',
-                                  reply_markup=ReplyKeyboardRemove())
+        await continue_start_register_callback(call.message, language)
     if command_update[0] == 'lang':
-        await call.message.answer(_('Пришли свое имя(Send your name)'), reply_markup=cancel_register_markup)
+        await call.message.answer(_('Пришли свое имя', locale=language))
         await RegisterUsers.name.set()
