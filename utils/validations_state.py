@@ -9,12 +9,12 @@ async def validations_phone(phone, country):
                 phone = '+{}{}{}({}{}){}{}{}-{}{}-{}{}'.format(*valid_phone)
                 return phone
             return None
-        elif country == ['Russia', 'Россия']:
+        elif country in ['Russia', 'Россия']:
             if valid_phone[0] == 7:
                 phone = '+{}({}{}{}){}{}{}-{}{}-{}{}'.format(*valid_phone)
                 return phone
             return None
-        elif country == ['England', 'Великобритания']:
+        elif country in ['United Kingdom', 'Великобритания']:
             if valid_phone[:2:] == [4, 4]:
                 phone = '+{}{}({}{}{}){}{}{}-{}{}{}{}'.format(*valid_phone)
                 return phone
