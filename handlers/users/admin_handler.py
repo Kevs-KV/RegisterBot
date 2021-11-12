@@ -1,3 +1,5 @@
+import time
+
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import Command
 
@@ -6,17 +8,14 @@ from loader import dp, db, _
 from utils.db_api.commands_admin import all_register_users, count_users
 
 
-@dp.message_handler(Command('all_register_users'))
+@dp.message_handler(Command('all_register_users'), user_id=config.ADMINS)
 async def get_all_register_users(message: types.Message):
-    admins = [int(admin) for admin in config.ADMINS]
-    if message.from_user.id in admins:
-        users = await all_register_users()
-        count = await count_users()
-        await message.answer(_('Всего пользователей: {}, зарегестривованые из них: {}').format(count, len(users)))
-        for user in users:
-            await message.answer(user)
-    else:
-        await message.answer(_('Вы не администратор'))
+    users = await all_register_users()
+    count = await count_users()
+    await message.answer(_('Всего пользователей: {}, зарегестривованые из них: {}').format(count, len(users)))
+    for user in users:
+        time.sleep(0.3)
+        await message.answer(user)
 
 
 @dp.message_handler(Command('drop_all_users'), user_id=config.ADMINS)
